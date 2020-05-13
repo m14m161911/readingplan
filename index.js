@@ -28,6 +28,7 @@ let content = [
     generational ministry.`,
     `Redirected to an external web page.`
 ]
+let version = ['KJV', 'ESV', 'NIV'];
 
 // basic login function from stackoverflow.com
 function login() {
@@ -98,42 +99,72 @@ window.onload = function(){
 
     // create login element
     let form = document.createElement('form');
-    form.setAttribute('name', '"Form"');
-    form.setAttribute('input', '"login()"');
+    form.setAttribute('name', 'Form');
+    form.setAttribute('input', 'login()');
     let input = document.createElement('input');
-    input.setAttribute('type', '"submit"');
-    input.setAttribute('value', '"Log In"');
-    input.setAttribute('style', "font-family: 'Comic Sans Ms'");
+    input.setAttribute('type', 'submit');
+    input.setAttribute('value', 'Log In');
+    input.setAttribute('style', 'font-family: "Comic Sans Ms"');
+
+    // create bible version drop down menu
+    let vers = document.createElement('div');
+    vers.setAttribute('class', 'dropdown')
+    let versel = document.createElement('button');
+    versel.setAttribute('class', 'dropbtn');
+    versel.innerHTML = 'Select Bible Version';
+    vers.appendChild(versel);
+    let dropdn = document.createElement('div');
+    dropdn.setAttribute('class', 'dropdown-content');
+    versel.appendChild(dropdn)
+    let vers1 = document.createElement('button');
+    vers1.setAttribute('class', 'button2')
+    vers1.innerHTML = 'King James Version (KJV)';
+    dropdn.appendChild(vers1);
+    let vers2 = document.createElement('button');
+    vers2.setAttribute('class', 'button2')
+    vers2.innerHTML = 'English Standard Version (ESV)';
+    dropdn.appendChild(vers2);
+    let vers3= document.createElement('button');
+    vers3.setAttribute('class', 'button2')
+    vers3.innerHTML = 'New International Version (NIV)';
+    dropdn.appendChild(vers3);
 
     // add buttons to menu
     let button0 = document.createElement('button');
     button0.innerHTML = 'Login'
     console.log(button0);
     menu.appendChild(button0);
+    
     let button1 = document.createElement('button');
     button1.innerHTML = 'Why a new reading plan?';
     console.log(button1);
     menu.appendChild(button1);
+    
     let button2 = document.createElement('button');
     button2.innerHTML = 'Why read the entire bible?';
     console.log(button2);
     menu.appendChild(button2);
+    
     let button3 = document.createElement('button');
-    button3.innerHTML = "Let's get started.";
+    button3.innerHTML = "Reading Plan";
     console.log(button3);
     menu.appendChild(button3);
+    
     let button4 = document.createElement('button');
     button4.innerHTML = 'Navigators Calling';
     console.log(button4);
     menu.appendChild(button4);
+    
     let button5 = document.createElement('button');
     button5.innerHTML = 'Navigators Values';
     console.log(button5);
     menu.appendChild(button5);
+    
     let button6 = document.createElement('button');
     button6.innerHTML = 'Navigators Vision';
     console.log(button6);
     menu.appendChild(button6);
+    
     let button7 = document.createElement('button');
     button7.innerHTML = 'About Kitsap Navigators';
     console.log(button7);
@@ -141,7 +172,7 @@ window.onload = function(){
 
     // make buttons work
     button0.addEventListener('click', function(){
-        main.innerHTML = form;
+        // main.innerHTML = form;
     })
     button1.addEventListener('click', function(){
         main.innerHTML = content[1];
@@ -150,7 +181,18 @@ window.onload = function(){
         main.innerHTML = content[2];
     })
     button3.addEventListener('click', function(){
-        main.innerHTML = content[3];
+        main.innerHTML = content[3] + '<br>';
+        main.appendChild(vers);
+        vers1.addEventListener('click', function(){
+            main.innerHTML = 'Selected version is ' + version[0];
+        })
+        vers2.addEventListener('click', function(){
+            main.innerHTML = 'Selected version is ' + version[1];
+        })
+        vers3.addEventListener('click', function(){
+            main.innerHTML = 'Selected version is ' + version[2];
+        })
+        main.appendChild(groups);
     })
     button4.addEventListener('click', function(){
         main.innerHTML = content[4];
