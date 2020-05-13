@@ -29,6 +29,8 @@ let content = [
     `Redirected to an external web page.`
 ]
 let version = ['KJV', 'ESV', 'NIV'];
+let selvers = [];
+let bbooks = ['Genesis', 'Psalms', 'Matthew']
 
 // basic login function from stackoverflow.com
 function login() {
@@ -118,16 +120,39 @@ window.onload = function(){
     versel.appendChild(dropdn)
     let vers1 = document.createElement('button');
     vers1.setAttribute('class', 'button2')
-    vers1.innerHTML = 'King James Version (KJV)';
+    vers1.innerHTML = 'Genesis';
     dropdn.appendChild(vers1);
     let vers2 = document.createElement('button');
     vers2.setAttribute('class', 'button2')
-    vers2.innerHTML = 'English Standard Version (ESV)';
+    vers2.innerHTML = 'Psalms';
     dropdn.appendChild(vers2);
     let vers3= document.createElement('button');
     vers3.setAttribute('class', 'button2')
-    vers3.innerHTML = 'New International Version (NIV)';
+    vers3.innerHTML = 'Matthew';
     dropdn.appendChild(vers3);
+
+    // select book and chapter of the bible
+    // let books = document.createElement('div');
+    // books.setAttribute('class', 'dropdown')
+    // let book = document.createElement('button');
+    // book.setAttribute('class', 'dropbtn');
+    // book.innerHTML = 'Select Book of the Bible';
+    // books.appendChild(book);
+    // let bookdrop = document.createElement('div');
+    // bookdrop.setAttribute('class', 'dropdown-content');
+    // book1.appendChild(bookdrop)
+    // let book1 = document.createElement('button');
+    // book1.setAttribute('class', 'button2')
+    // book1.innerHTML = 'King James Version (KJV)';
+    // bookdrop.appendChild(book1);
+    // let book2 = document.createElement('button');
+    // book2.setAttribute('class', 'button2')
+    // book2.innerHTML = 'English Standard Version (ESV)';
+    // bookdrop.appendChild(book2);
+    // let book3= document.createElement('button');
+    // book3.setAttribute('class', 'button2')
+    // book3.innerHTML = 'New International Version (NIV)';
+    // bookdrop.appendChild(book3);
 
     // add buttons to menu
     let button0 = document.createElement('button');
@@ -184,13 +209,19 @@ window.onload = function(){
         main.innerHTML = content[3] + '<br>';
         main.appendChild(vers);
         vers1.addEventListener('click', function(){
-            main.innerHTML = 'Selected version is ' + version[0];
+            selvers = version[0];
+            console.log(selvers);
+            main.innerHTML = 'Selected version is King James Version';
         })
         vers2.addEventListener('click', function(){
-            main.innerHTML = 'Selected version is ' + version[1];
+            selvers = version[1];
+            console.log(selvers);
+            main.innerHTML = 'Selected version is English Standard Version';
         })
         vers3.addEventListener('click', function(){
-            main.innerHTML = 'Selected version is ' + version[2];
+            selvers = version[2];
+            console.log(selvers);
+            main.innerHTML = 'Selected version is  New International Version';
         })
         main.appendChild(groups);
     })
