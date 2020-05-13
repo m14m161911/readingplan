@@ -1,3 +1,13 @@
+let users = [
+    {
+        username: 'jjvansly',
+        passwd: '2Bornot2b'
+    },
+    {
+        username: 'borntoread',
+        passwd: 'Readingisfun'
+    }
+]
 let content = [
     `Build your bible reading plan your way ...`,
     `I haven't found one that allows the flexibility that I am looking for to choose how to read the bible.  This bible reading plan provides you the most flexibility in choosing how to read the bible.  Read as many chapters or verses (future option) as you want each day.  There is no pressure.  If you miss a day or don't finish reading for the day, no worries, your plan will be waiting for you to pick up where you left off when you are ready (Don't wait too long, though.  The longer you wait, the harder it will be to pick it back up again).  Your goal should be to know the only true living God and Jesus Christ whom he has sent (John 17:3), developing your relationship with him, not sticking to a specific reading plan.  So, take your time.  Learn to enjoy spending time with God in his word.  You have a lifetime to spend with him, and an eternity afterwards.`,
@@ -18,6 +28,21 @@ let content = [
     generational ministry.`,
     `Redirected to an external web page.`
 ]
+
+// basic login function from stackoverflow.com
+function login() {
+    var user = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
+    if(user == "lab18" && pass == "lab18") {
+        alert("Logged In");
+        locate="new11.html"
+        return false;
+    } else {
+        alert("wrong user/pass");
+        return false;
+        }
+    }
+
 console.log(content);
 
 window.onload = function(){
@@ -71,6 +96,15 @@ window.onload = function(){
     console.log(image)
     heading.appendChild(image)
 
+    // create login element
+    let form = document.createElement('form');
+    form.setAttribute('name', '"Form"');
+    form.setAttribute('input', '"login()"');
+    let input = document.createElement('input');
+    input.setAttribute('type', '"submit"');
+    input.setAttribute('value', '"Log In"');
+    input.setAttribute('style', "font-family: 'Comic Sans Ms'");
+
     // add buttons to menu
     let button0 = document.createElement('button');
     button0.innerHTML = 'Login'
@@ -107,7 +141,7 @@ window.onload = function(){
 
     // make buttons work
     button0.addEventListener('click', function(){
-
+        main.innerHTML = form;
     })
     button1.addEventListener('click', function(){
         main.innerHTML = content[1];
