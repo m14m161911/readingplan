@@ -24,19 +24,16 @@ let users = [
 ];
 let buttonNames = [
     'Login',
-    'Why a new reading plan?',
-    'Why read the entire bible?',
-    'Read the bible',
     'Navigators Calling',
     'Navigators Values',
     'Navigators Vision',
+    'Why a new reading plan?',
+    'Why read the entire bible?',
+    'Read the bible',
     'About Kitsap Navigators'
 ];
 let content = [
-    ``,
-    `I haven't found one that allows the flexibility that I am looking for to choose how to read the bible.  This bible reading plan provides you the most flexibility in choosing how to read the bible.  Read as many chapters or verses (future option) as you want each day.  There is no pressure.  If you miss a day or don't finish reading for the day, no worries, your plan will be waiting for you to pick up where you left off when you are ready (Don't wait too long, though.  The longer you wait, the harder it will be to pick it back up again).  Your goal should be to know the only true living God and Jesus Christ whom he has sent (John 17:3), developing your relationship with him, not sticking to a specific reading plan.  So, take your time.  Learn to enjoy spending time with God in his word.  You have a lifetime to spend with him, and an eternity afterwards.`,
-    `There are many plans and devotions out there that hit specific topics, and they are useful, but "All Scripture is inspired by God and profitable for teaching, for reproof, for correction, for training in righteousness; so that the man of God may be adequate, equipped for every good work."  (2 Timothy 3:16-17)  My fear is that many of today's Christians have a limited view and knowledge of God because they only do "popcorn" plans and devotions that interest them, and only get a one-sided view of God as a result.`,
-    `Let's get started.`,
+    `Currently under construction.`,
     `To know Christ, make him known, and help others to do the same.`,
     `The passion to know, love and become like Jesus Christ. Phil. 3:10, Matt. 10:24,25 <br>
     The truth and sufficiency of the Scriptures for the whole of life. II Tim 3:16,17, II Pet. 1:3,4 <br>
@@ -50,12 +47,15 @@ let content = [
     `We see a vital movement of the Gospel, fueled by prevailing prayer, flowing freely through relational networks and
     out into the nations. Workers for the Kingdom are next door to everywhere!  What characterizes this movement? A heart for the whole person ... climates of grace ... compassion for the vulnerable and broken ... sacrificial unity embracing diversity ... cultural relevance and sensitivity ... interdependence with others in the wider family of God ... transformed men and women, fragrant with humility and the aroma of Christ. They are marked by a deep engagement with and obedience to the Scriptures as the Word of God. They believe the promises of God. Both personally and in committed communities, they seek to know and pursue the purposes of God. Laborers and leaders are emerging, with an increasing passion for Jesus Christ. They demonstrate faith and courage as they live and move among their friends and families. As spiritual parents, they model authenticity and relevance. Ordinary people, in many walks of life, are joyfully leading integrated lives. They live as fruitful insiders among the lost. There is perseverance in the face of hardship and suffering. Around the world, many are coming to faith. As they become   established in discipleship, some grow to be foundational for further generations. The Gospel spreads naturally and powerfully, as believers share Christ ... life upon life ... family to family. Crossing cultures into new cities and nations, teams of mobile pioneers intentionally proclaim and embody the good news of Jesus Christ, in such a way that transformed communities multiply. These communities are bringing joy and hope to their surrounding environments as relationships are healed and justice increases. Indeed, the lost and unreached burn in their hearts, as they move the Gospel into the nations. The leaders of this movement, developed and empowered for God’s service, live out a growing commitment to Christlikeness. They are dependent upon the Holy Spirit. New generations of leaders are emerging, rooted incarnationally in their local and national contexts. An international leadership community brings focus, alignment and energy to their movement. These leaders are clearly committed to long-term impact in 
     generational ministry.`,
+    `I haven't found one that allows the flexibility that I am looking for to choose how to read the bible.  This bible reading plan provides you the most flexibility in choosing how to read the bible.  Read as many chapters or verses (future option) as you want each day.  There is no pressure.  If you miss a day or don't finish reading for the day, no worries, your plan will be waiting for you to pick up where you left off when you are ready (Don't wait too long, though.  The longer you wait, the harder it will be to pick it back up again).  Your goal should be to know the only true living God and Jesus Christ whom he has sent (John 17:3), developing your relationship with him, not sticking to a specific reading plan.  So, take your time.  Learn to enjoy spending time with God in his word.  You have a lifetime to spend with him, and an eternity afterwards.`,
+    `There are many plans and devotions out there that hit specific topics, and they are useful, but "All Scripture is inspired by God and profitable for teaching, for reproof, for correction, for training in righteousness; so that the man of God may be adequate, equipped for every good work."  (2 Timothy 3:16-17)  My fear is that many of today's Christians have a limited view and knowledge of God because they only do "popcorn" plans and devotions that interest them, and only get a one-sided view of God as a result.`,
+    `Let's get started.`,
     `Redirected to an external web page.`
 ];
 let version = [
-    {fullname: 'King James Version', shortname: '(KJV)'}, 
-    {fullname: 'English Standard Version', shortname: '(ESV)'}, 
-    {fullname: 'New International Version', shortname: '(NIV)'}
+    {fullname: 'King James Version', shortname: 'KJV'}, 
+    {fullname: 'English Standard Version', shortname: 'ESV'}, 
+    {fullname: 'New International Version', shortname: 'NIV'}
 ];
 let bbooks = [
     {bk: 'Genesis', maxchap: 50},
@@ -141,7 +141,6 @@ window.onload = function(){
     let container = document.createElement("div");
     container.setAttribute('class', 'grid-container');
     console.log(container);
-
     root.appendChild(container);
 
     // add header section to grid
@@ -161,7 +160,7 @@ window.onload = function(){
     main.setAttribute('class', 'middle');
     console.log(main);
     container.appendChild(main);
-    main.innerHTML = content[0];
+    main.innerHTML = 'Read the bible your way ...';
 
     // add right section to grid
     let right = document.createElement("div");
@@ -193,95 +192,31 @@ window.onload = function(){
     input.setAttribute('style', 'font-family: "Comic Sans Ms"');
 
    // add buttons to menu
-    // for (let h = 0; h < 7, h++) {
-    //     let button0 = document.createElement('button');
-    //     button0.innerHTML = buttonNames[h];
-    //     console.log(button0);
-    //     menu.appendChild(button0);
-    //     button0.addEventListener('click', function(){
-    //         main.innerHTML = content[h];
-    //         if (h === 3) {
-    //             main.appendChild(vers);
-    //         };
-    //         if (h === 7) {
-    //             var win = window.open('https://www.navigators.org/staff/23831807/', '_blank');
-    //             if (win) {
-    //                 //Browser has allowed it to be opened
-    //                 win.focus();
-    //             } else {
-    //                 //Browser has blocked it
-    //                 alert('Please allow popups for this website');
-    //             };
-    //         };
+    for (let i = 0; i < buttonNames.length - 2; i++) {
+        let button = document.createElement('button');
+        button.innerHTML = buttonNames[i];
+        console.log(button);
+        menu.appendChild(button);
+        button.addEventListener('click', function(){
+            main.innerHTML = content[i];
+        });
+    }
 
-    //     });
-    // }
-
-    let button0 = document.createElement('button');
-    button0.innerHTML = 'Login'
-    console.log(button0);
-    menu.appendChild(button0);
-    
-    let button1 = document.createElement('button');
-    button1.innerHTML = 'Why a new reading plan?';
-    console.log(button1);
-    menu.appendChild(button1);
-    
-    let button2 = document.createElement('button');
-    button0.addEventListener('click', function(){
-        main.innerHTML = 'Current under construction.';
-    });
-    button2.innerHTML = 'Why read the entire bible?';
-    console.log(button2);
-    menu.appendChild(button2);
-    
-    let button3 = document.createElement('button');
-    button3.innerHTML = "Reading Plan";
-    console.log(button3);
-    menu.appendChild(button3);
-    
-    let button4 = document.createElement('button');
-    button4.innerHTML = 'Navigators Calling';
-    console.log(button4);
-    menu.appendChild(button4);
-    
-    let button5 = document.createElement('button');
-    button5.innerHTML = 'Navigators Values';
-    console.log(button5);
-    menu.appendChild(button5);
-    
-    let button6 = document.createElement('button');
-    button6.innerHTML = 'Navigators Vision';
-    console.log(button6);
-    menu.appendChild(button6);
-    
-    let button7 = document.createElement('button');
-    button7.innerHTML = 'About Kitsap Navigators';
-    console.log(button7);
-    menu.appendChild(button7);
-
-    //make buttons work
-    button1.addEventListener('click', function(){
-        main.innerHTML = content[1];
-    });
-    button2.addEventListener('click', function(){
-        main.innerHTML = content[2];
-    });
-    button3.addEventListener('click', function(){
-        main.innerHTML = content[3] + '<br>';
+    let button2ndLast = document.createElement('button');
+    button2ndLast.innerHTML = buttonNames[buttonNames.length - 2];
+    console.log(button2ndLast);
+    menu.appendChild(button2ndLast);
+    button2ndLast.addEventListener('click', function(){
+        main.innerHTML = content[buttonNames.length - 2] + '<br>';
         main.appendChild(vers);
     });
-    button4.addEventListener('click', function(){
-        main.innerHTML = content[4];
-    });
-    button5.addEventListener('click', function(){
-        main.innerHTML = content[5];
-    });
-    button6.addEventListener('click', function(){
-        main.innerHTML = content[6];
-    });
-    button7.addEventListener('click', function (){
-        main.innerHTML = content[7];
+    
+    let buttonLast = document.createElement('button');
+    buttonLast.innerHTML = buttonNames[buttonNames.length - 1];
+    console.log(buttonLast);
+    menu.appendChild(buttonLast);
+    buttonLast.addEventListener('click', function (){
+        main.innerHTML = content[buttonNames.length - 1];
         var win = window.open('https://www.navigators.org/staff/23831807/', '_blank');
         if (win) {
             //Browser has allowed it to be opened
@@ -331,42 +266,63 @@ window.onload = function(){
     bookdrop.setAttribute('class', 'dropdown-content');
     book.appendChild(bookdrop)
 
-    for (let j = 0; j < bbooks.length; j++) {
+    for (let i = 0; i < bbooks.length; i++) {
         let bookButt = document.createElement('button');
         bookButt.setAttribute('class', 'button2')
-        bookButt.innerHTML = bbooks[j].bk;
+        bookButt.innerHTML = bbooks[i].bk;
         bookdrop.appendChild(bookButt);
         bookButt.addEventListener('click', function(){
-            selbk = j;
-            console.log(selbk);
+            selbk = i;
+            console.log(bbooks[selbk].bk);
             main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br>`;
-            main.appendChild(selchap);
+            main.appendChild(chapters);
         });
     };
 
-    // select chapter
-    // let selchap = document.createElement('div');
-    // selchap.setAttribute('class', 'dropdown');
+    // select chapter   
+    let chapters = document.createElement('div');
+    chapters.setAttribute('class', 'dropdown');
 
-    // let selchapt = document.createElement('button');
-    // selchapt.setAttribute('class', 'dropbtn');
-    // selchapt.innerHTML = 'Select chapter';
-    // selchap.appendChild(selchapt);
+    let chapter = document.createElement('button');
+    chapter.setAttribute('class', 'dropbtn');
+    chapter.innerHTML = 'Select Chapter';
+    chapters.appendChild(chapter);
 
-    // let chaptDrop = document.createElement('div');
-    // chaptDrop.setAttribute('class', 'dropdown-content');
-    // selchapt.appendChild(chaptDrop);
+    let chaptdrop = document.createElement('div');
+    chaptdrop.setAttribute('class', 'dropdown-content');
+    chapter.appendChild(chaptdrop)
 
-    // for (let k = 0; k < bbooks[1].maxchap; k++) {
-    //     let chaptButt = document.createElement('button');
-    //     chaptButt.setAttribute('class', 'button2')
-    //     chaptButt.innerHTML = bbooks[j].bk;
-    //     chaptDrop.appendChild(chaptButt);
-    //     chaptButt.addEventListener('click', function(){
-    //         selch = k+1;
-    //         console.log(selch);
-    //         main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br>`;
-    //     });
-    // };
+    for (let i = 0; i < bbooks.length; i++) {
+        let chaptButt = document.createElement('button');
+        chaptButt.setAttribute('class', 'button2')
+        chaptButt.innerHTML = i+1;
+        chaptdrop.appendChild(chaptButt);
+        chaptButt.addEventListener('click', function(){
+            selch = i+1;
+            console.log(selch);
+            main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br> Selected chapter: ${selch} <br>`;
+            main.appendChild(getPassage);
+        });
+    };
 
+    let getPassage = document.createElement('div');
+    getPassage.setAttribute('class', 'dropdown');
+
+    let passage = document.createElement('button');
+    passage.setAttribute('class', 'dropbtn');
+    passage.innerHTML = 'Get Passage';
+    getPassage.appendChild(passage);
+    
+    passage.addEventListener('click', function (){
+        let psg = `https://www.biblegateway.com/passage?search=${bbooks[selbk].bk}+${selch}&version=${version[selvers].shortname}`;
+        main.innerHTML = content[buttonNames.length - 1];
+        var win = window.open(psg, '_blank');
+        if (win) {
+            //Browser has allowed it to be opened
+            win.focus();
+        } else {
+            //Browser has blocked it
+            alert('Please allow popups for this website');
+        };
+    });
 }
