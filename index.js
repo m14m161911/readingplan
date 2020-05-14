@@ -28,9 +28,20 @@ let content = [
     generational ministry.`,
     `Redirected to an external web page.`
 ]
-let version = ['KJV', 'ESV', 'NIV'];
-let selvers = [];
-let bbooks = ['Genesis', 'Psalms', 'Matthew']
+let version = [
+    {fullname: 'King James Version', shortname: '(KJV)'}, 
+    {fullname: 'English Standard Version', shortname: '(ESV)'}, 
+    {fullname: 'New International Version', shortname: '(NIV)'}
+];
+let bbooks = [
+    {bk: 'Genesis', maxchap: 50},
+    {bk: 'Exodus' , maxchap: 40},
+    {bk: 'Psalms', maxchap: 176},
+    {bk: 'Matthew', maxchap: 28}
+]
+let selvers;
+let selbk;
+let selchapt;
 
 // basic login function from stackoverflow.com
 function login() {
@@ -108,53 +119,7 @@ window.onload = function(){
     input.setAttribute('value', 'Log In');
     input.setAttribute('style', 'font-family: "Comic Sans Ms"');
 
-    // create bible version drop down menu
-    let vers = document.createElement('div');
-    vers.setAttribute('class', 'dropdown')
-    let versel = document.createElement('button');
-    versel.setAttribute('class', 'dropbtn');
-    versel.innerHTML = 'Select Bible Version';
-    vers.appendChild(versel);
-    let dropdn = document.createElement('div');
-    dropdn.setAttribute('class', 'dropdown-content');
-    versel.appendChild(dropdn)
-    let vers1 = document.createElement('button');
-    vers1.setAttribute('class', 'button2')
-    vers1.innerHTML = 'Genesis';
-    dropdn.appendChild(vers1);
-    let vers2 = document.createElement('button');
-    vers2.setAttribute('class', 'button2')
-    vers2.innerHTML = 'Psalms';
-    dropdn.appendChild(vers2);
-    let vers3= document.createElement('button');
-    vers3.setAttribute('class', 'button2')
-    vers3.innerHTML = 'Matthew';
-    dropdn.appendChild(vers3);
-
-    // select book and chapter of the bible
-    // let books = document.createElement('div');
-    // books.setAttribute('class', 'dropdown')
-    // let book = document.createElement('button');
-    // book.setAttribute('class', 'dropbtn');
-    // book.innerHTML = 'Select Book of the Bible';
-    // books.appendChild(book);
-    // let bookdrop = document.createElement('div');
-    // bookdrop.setAttribute('class', 'dropdown-content');
-    // book1.appendChild(bookdrop)
-    // let book1 = document.createElement('button');
-    // book1.setAttribute('class', 'button2')
-    // book1.innerHTML = 'King James Version (KJV)';
-    // bookdrop.appendChild(book1);
-    // let book2 = document.createElement('button');
-    // book2.setAttribute('class', 'button2')
-    // book2.innerHTML = 'English Standard Version (ESV)';
-    // bookdrop.appendChild(book2);
-    // let book3= document.createElement('button');
-    // book3.setAttribute('class', 'button2')
-    // book3.innerHTML = 'New International Version (NIV)';
-    // bookdrop.appendChild(book3);
-
-    // add buttons to menu
+   // add buttons to menu
     let button0 = document.createElement('button');
     button0.innerHTML = 'Login'
     console.log(button0);
@@ -208,22 +173,6 @@ window.onload = function(){
     button3.addEventListener('click', function(){
         main.innerHTML = content[3] + '<br>';
         main.appendChild(vers);
-        vers1.addEventListener('click', function(){
-            selvers = version[0];
-            console.log(selvers);
-            main.innerHTML = 'Selected version is King James Version';
-        })
-        vers2.addEventListener('click', function(){
-            selvers = version[1];
-            console.log(selvers);
-            main.innerHTML = 'Selected version is English Standard Version';
-        })
-        vers3.addEventListener('click', function(){
-            selvers = version[2];
-            console.log(selvers);
-            main.innerHTML = 'Selected version is  New International Version';
-        })
-        main.appendChild(groups);
     })
     button4.addEventListener('click', function(){
         main.innerHTML = content[4];
@@ -245,4 +194,58 @@ window.onload = function(){
             alert('Please allow popups for this website');
         }
     })
+
+    // select bible version
+    let vers = document.createElement('div');
+    vers.setAttribute('class', 'dropdown');
+
+    let versel = document.createElement('button');
+    versel.setAttribute('class', 'dropbtn');
+    versel.innerHTML = 'Select Bible Version';
+    vers.appendChild(versel);
+
+    let dropdn = document.createElement('div');
+    dropdn.setAttribute('class', 'dropdown-content');
+    versel.appendChild(dropdn)
+
+    for (let i = 0; i < version.length; i++) {
+        let vers = document.createElement('button');
+        vers.setAttribute('class', 'button2')
+        vers.innerHTML = version[i].fullname;
+        dropdn.appendChild(vers);
+        vers.addEventListener('click', function(){
+            selvers = i;
+            console.log(version[selvers].shortname);
+            main.innerHTML = `Selected version: ${version[selvers].fullname} <br>`;
+            main.appendChild(books);
+        })
+    }
+
+    // select book of the bible
+    let books = document.createElement('div');
+    books.setAttribute('class', 'dropdown');
+
+    let book = document.createElement('button');
+    book.setAttribute('class', 'dropbtn');
+    book.innerHTML = 'Select Book of the Bible';
+    books.appendChild(book);
+
+    let bookdrop = document.createElement('div');
+    bookdrop.setAttribute('class', 'dropdown-content');
+    book.appendChild(bookdrop)
+
+    for (let j = 0; j < bbooks.length; j++) {
+        let bookButt = document.createElement('button');
+        bookButt.setAttribute('class', 'button2')
+        bookButt.innerHTML = bbooks[j].bk;
+        bookdrop.appendChild(bookButt);
+        bookButt.addEventListener('click', function(){
+            selbk = j;
+            console.log(selbk);
+            main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br>`;
+            // main.appendChild(selchapt);
+        })
+    }
+
+    // select chapter
 }
