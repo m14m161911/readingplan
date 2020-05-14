@@ -1,3 +1,17 @@
+// basic login function from stackoverflow.com
+// function login() {
+//     var user = document.getElementById("username").value;
+//     var pass = document.getElementById("password").value;
+//     if(user == "lab18" && pass == "lab18") {
+//         alert("Logged In");
+//         locate="new11.html"
+//         return false;
+//     } else {
+//         alert("wrong user/pass");
+//         return false;
+//         }
+//     }
+
 let users = [
     {
         username: 'jjvansly',
@@ -7,9 +21,19 @@ let users = [
         username: 'borntoread',
         passwd: 'Readingisfun'
     }
-]
+];
+let buttonNames = [
+    'Login',
+    'Why a new reading plan?',
+    'Why read the entire bible?',
+    'Read the bible',
+    'Navigators Calling',
+    'Navigators Values',
+    'Navigators Vision',
+    'About Kitsap Navigators'
+];
 let content = [
-    `Build your bible reading plan your way ...`,
+    ``,
     `I haven't found one that allows the flexibility that I am looking for to choose how to read the bible.  This bible reading plan provides you the most flexibility in choosing how to read the bible.  Read as many chapters or verses (future option) as you want each day.  There is no pressure.  If you miss a day or don't finish reading for the day, no worries, your plan will be waiting for you to pick up where you left off when you are ready (Don't wait too long, though.  The longer you wait, the harder it will be to pick it back up again).  Your goal should be to know the only true living God and Jesus Christ whom he has sent (John 17:3), developing your relationship with him, not sticking to a specific reading plan.  So, take your time.  Learn to enjoy spending time with God in his word.  You have a lifetime to spend with him, and an eternity afterwards.`,
     `There are many plans and devotions out there that hit specific topics, and they are useful, but "All Scripture is inspired by God and profitable for teaching, for reproof, for correction, for training in righteousness; so that the man of God may be adequate, equipped for every good work."  (2 Timothy 3:16-17)  My fear is that many of today's Christians have a limited view and knowledge of God because they only do "popcorn" plans and devotions that interest them, and only get a one-sided view of God as a result.`,
     `Let's get started.`,
@@ -27,7 +51,7 @@ let content = [
     out into the nations. Workers for the Kingdom are next door to everywhere!  What characterizes this movement? A heart for the whole person ... climates of grace ... compassion for the vulnerable and broken ... sacrificial unity embracing diversity ... cultural relevance and sensitivity ... interdependence with others in the wider family of God ... transformed men and women, fragrant with humility and the aroma of Christ. They are marked by a deep engagement with and obedience to the Scriptures as the Word of God. They believe the promises of God. Both personally and in committed communities, they seek to know and pursue the purposes of God. Laborers and leaders are emerging, with an increasing passion for Jesus Christ. They demonstrate faith and courage as they live and move among their friends and families. As spiritual parents, they model authenticity and relevance. Ordinary people, in many walks of life, are joyfully leading integrated lives. They live as fruitful insiders among the lost. There is perseverance in the face of hardship and suffering. Around the world, many are coming to faith. As they become   established in discipleship, some grow to be foundational for further generations. The Gospel spreads naturally and powerfully, as believers share Christ ... life upon life ... family to family. Crossing cultures into new cities and nations, teams of mobile pioneers intentionally proclaim and embody the good news of Jesus Christ, in such a way that transformed communities multiply. These communities are bringing joy and hope to their surrounding environments as relationships are healed and justice increases. Indeed, the lost and unreached burn in their hearts, as they move the Gospel into the nations. The leaders of this movement, developed and empowered for God’s service, live out a growing commitment to Christlikeness. They are dependent upon the Holy Spirit. New generations of leaders are emerging, rooted incarnationally in their local and national contexts. An international leadership community brings focus, alignment and energy to their movement. These leaders are clearly committed to long-term impact in 
     generational ministry.`,
     `Redirected to an external web page.`
-]
+];
 let version = [
     {fullname: 'King James Version', shortname: '(KJV)'}, 
     {fullname: 'English Standard Version', shortname: '(ESV)'}, 
@@ -36,28 +60,77 @@ let version = [
 let bbooks = [
     {bk: 'Genesis', maxchap: 50},
     {bk: 'Exodus' , maxchap: 40},
-    {bk: 'Psalms', maxchap: 176},
-    {bk: 'Matthew', maxchap: 28}
-]
+    {bk: 'Leviticus', maxchap: 27},
+    {bk: 'Numbers', maxchap: 36},
+    {bk: 'Deuteronomy', maxchap: 34},
+    {bk: 'Joshua', maxchap: 24},
+    {bk: 'Judges', maxchap: 21},
+    {bk: 'Ruth', maxchap: 4},
+    {bk: '1 Samuel', maxchap: 31},
+    {bk: '2 Samuel', maxchap: 24},
+    {bk: '1 Kings', maxchap: 22},
+    {bk: '2 Kings', maxchap: 25},
+    {bk: '1 Chronicles', maxchap: 29},
+    {bk: '2 Chronicles', maxchap: 36},
+    {bk: 'Ezra', maxchap: 10},
+    {bk: 'Nehemiah', maxchap: 13},
+    {bk: 'Esther', maxchap: 10},
+    {bk: 'Job', maxchap: 42},
+    {bk: 'Psalms', maxchap: 150},
+    {bk: 'Proverbs', maxchap: 31},
+    {bk: 'Ecclesiastes', maxchap: 12},
+    {bk: 'Song of Solomon', maxchap: 8},
+    {bk: 'Isaiah', maxchap: 66},
+    {bk: 'Jeremiah', maxchap: 52},
+    {bk: 'Lamentations', maxchap: 5},
+    {bk: 'Ezekiel', maxchap: 48},
+    {bk: 'Daniel', maxchap: 12},
+    {bk: 'Hosea', maxchap: 14},
+    {bk: 'Joel', maxchap: 3},
+    {bk: 'Amos', maxchap: 9},
+    {bk: 'Obadiah', maxchap: 1},
+    {bk: 'Jonah', maxchap: 4},
+    {bk: 'Micah', maxchap: 7},
+    {bk: 'Nahum', maxchap: 3},
+    {bk: 'Habakkuk', maxchap: 3},
+    {bk: 'Zephaniah', maxchap: 3},
+    {bk: 'Haggai', maxchap: 2},
+    {bk: 'Zechariah', maxchap: 14},
+    {bk: 'Malachi', maxchap: 4},
+    {bk: 'Matthew', maxchap: 28},
+    {bk: 'Mark', maxchap: 16},
+    {bk: 'Luke', maxchap: 24},
+    {bk: 'John', maxchap: 21},
+    {bk: 'Acts', maxchap: 28},
+    {bk: 'Romans', maxchap: 16},
+    {bk: '1 Corinthians', maxchap: 16},
+    {bk: '2 Corinthians', maxchap: 13},
+    {bk: 'Galatians', maxchap: 6},
+    {bk: 'Ephesians', maxchap: 6},
+    {bk: 'Philippians', maxchap: 4},
+    {bk: 'Collosians', maxchap: 4},
+    {bk: '1 Thessalonians', maxchap: 5},
+    {bk: '2 Thessalonians', maxchap: 3},
+    {bk: '1 Timothy', maxchap: 6},
+    {bk: '2 Timothy', maxchap: 4},
+    {bk: 'Titus', maxchap: 3},
+    {bk: 'Philemon', maxchap: 1},
+    {bk: 'Hebrews', maxchap: 13},
+    {bk: 'James', maxchap: 5},
+    {bk: '1 Peter', maxchap: 5},
+    {bk: '2 Peter', maxchap: 3},
+    {bk: '1 John', maxchap: 5},
+    {bk: '2 John', maxchap: 1},
+    {bk: '3 John', maxchap: 1},
+    {bk: 'Jude', maxchap: 1},
+    {bk: 'Revelation', maxchap: 22}
+];
 let selvers;
 let selbk;
-let selchapt;
+let selch;
 
-// basic login function from stackoverflow.com
-function login() {
-    var user = document.getElementById("username").value;
-    var pass = document.getElementById("password").value;
-    if(user == "lab18" && pass == "lab18") {
-        alert("Logged In");
-        locate="new11.html"
-        return false;
-    } else {
-        alert("wrong user/pass");
-        return false;
-        }
-    }
+console.log(bbooks[1].bk, bbooks[1].maxchap);
 
-console.log(content);
 
 window.onload = function(){
     // bring in root div from html
@@ -120,6 +193,30 @@ window.onload = function(){
     input.setAttribute('style', 'font-family: "Comic Sans Ms"');
 
    // add buttons to menu
+    // for (let h = 0; h < 7, h++) {
+    //     let button0 = document.createElement('button');
+    //     button0.innerHTML = buttonNames[h];
+    //     console.log(button0);
+    //     menu.appendChild(button0);
+    //     button0.addEventListener('click', function(){
+    //         main.innerHTML = content[h];
+    //         if (h === 3) {
+    //             main.appendChild(vers);
+    //         };
+    //         if (h === 7) {
+    //             var win = window.open('https://www.navigators.org/staff/23831807/', '_blank');
+    //             if (win) {
+    //                 //Browser has allowed it to be opened
+    //                 win.focus();
+    //             } else {
+    //                 //Browser has blocked it
+    //                 alert('Please allow popups for this website');
+    //             };
+    //         };
+
+    //     });
+    // }
+
     let button0 = document.createElement('button');
     button0.innerHTML = 'Login'
     console.log(button0);
@@ -131,6 +228,9 @@ window.onload = function(){
     menu.appendChild(button1);
     
     let button2 = document.createElement('button');
+    button0.addEventListener('click', function(){
+        main.innerHTML = 'Current under construction.';
+    });
     button2.innerHTML = 'Why read the entire bible?';
     console.log(button2);
     menu.appendChild(button2);
@@ -160,29 +260,26 @@ window.onload = function(){
     console.log(button7);
     menu.appendChild(button7);
 
-    // make buttons work
-    button0.addEventListener('click', function(){
-        // main.innerHTML = form;
-    })
+    //make buttons work
     button1.addEventListener('click', function(){
         main.innerHTML = content[1];
-    })
+    });
     button2.addEventListener('click', function(){
         main.innerHTML = content[2];
-    })
+    });
     button3.addEventListener('click', function(){
         main.innerHTML = content[3] + '<br>';
         main.appendChild(vers);
-    })
+    });
     button4.addEventListener('click', function(){
         main.innerHTML = content[4];
-    })
+    });
     button5.addEventListener('click', function(){
         main.innerHTML = content[5];
-    })
+    });
     button6.addEventListener('click', function(){
         main.innerHTML = content[6];
-    })
+    });
     button7.addEventListener('click', function (){
         main.innerHTML = content[7];
         var win = window.open('https://www.navigators.org/staff/23831807/', '_blank');
@@ -192,8 +289,8 @@ window.onload = function(){
         } else {
             //Browser has blocked it
             alert('Please allow popups for this website');
-        }
-    })
+        };
+    });
 
     // select bible version
     let vers = document.createElement('div');
@@ -218,8 +315,8 @@ window.onload = function(){
             console.log(version[selvers].shortname);
             main.innerHTML = `Selected version: ${version[selvers].fullname} <br>`;
             main.appendChild(books);
-        })
-    }
+        });
+    };
 
     // select book of the bible
     let books = document.createElement('div');
@@ -243,9 +340,33 @@ window.onload = function(){
             selbk = j;
             console.log(selbk);
             main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br>`;
-            // main.appendChild(selchapt);
-        })
-    }
+            main.appendChild(selchap);
+        });
+    };
 
     // select chapter
+    // let selchap = document.createElement('div');
+    // selchap.setAttribute('class', 'dropdown');
+
+    // let selchapt = document.createElement('button');
+    // selchapt.setAttribute('class', 'dropbtn');
+    // selchapt.innerHTML = 'Select chapter';
+    // selchap.appendChild(selchapt);
+
+    // let chaptDrop = document.createElement('div');
+    // chaptDrop.setAttribute('class', 'dropdown-content');
+    // selchapt.appendChild(chaptDrop);
+
+    // for (let k = 0; k < bbooks[1].maxchap; k++) {
+    //     let chaptButt = document.createElement('button');
+    //     chaptButt.setAttribute('class', 'button2')
+    //     chaptButt.innerHTML = bbooks[j].bk;
+    //     chaptDrop.appendChild(chaptButt);
+    //     chaptButt.addEventListener('click', function(){
+    //         selch = k+1;
+    //         console.log(selch);
+    //         main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br>`;
+    //     });
+    // };
+
 }
