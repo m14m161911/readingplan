@@ -129,9 +129,6 @@ let selvers;
 let selbk;
 let selch;
 
-console.log(bbooks[1].bk, bbooks[1].maxchap);
-
-
 window.onload = function(){
     // bring in root div from html
     let root = document.querySelector('#root');
@@ -192,7 +189,7 @@ window.onload = function(){
     input.setAttribute('style', 'font-family: "Comic Sans Ms"');
 
    // add buttons to menu
-    for (let i = 0; i < buttonNames.length - 2; i++) {
+    for (let i = 1; i < buttonNames.length - 2; i++) {
         let button = document.createElement('button');
         button.innerHTML = buttonNames[i];
         console.log(button);
@@ -273,7 +270,8 @@ window.onload = function(){
         bookdrop.appendChild(bookButt);
         bookButt.addEventListener('click', function(){
             selbk = i;
-            console.log(bbooks[selbk].bk);
+            console.log(bbooks[selbk].bk, bbooks[selbk].maxchap);
+            console.log(typeof(bbooks[selbk].maxchap));
             main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br>`;
             main.appendChild(chapters);
         });
@@ -292,19 +290,21 @@ window.onload = function(){
     chaptdrop.setAttribute('class', 'dropdown-content');
     chapter.appendChild(chaptdrop)
 
-    for (let i = 0; i < bbooks.length; i++) {
+    for (let i = 1; i < 50; i++) {
         let chaptButt = document.createElement('button');
         chaptButt.setAttribute('class', 'button2')
-        chaptButt.innerHTML = i+1;
+        chaptButt.innerHTML = i;
         chaptdrop.appendChild(chaptButt);
         chaptButt.addEventListener('click', function(){
-            selch = i+1;
+            selch = i;
             console.log(selch);
             main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br> Selected chapter: ${selch} <br>`;
             main.appendChild(getPassage);
         });
     };
 
+    let j = 0;
+    
     let getPassage = document.createElement('div');
     getPassage.setAttribute('class', 'dropdown');
 
