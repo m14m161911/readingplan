@@ -125,6 +125,7 @@ let bbooks = [
     {bk: 'Jude', maxchap: 1},
     {bk: 'Revelation', maxchap: 22}
 ];
+
 let selvers;
 let selbk;
 let selch;
@@ -132,7 +133,7 @@ let selch;
 window.onload = function(){
     // bring in root div from html
     let root = document.querySelector('#root');
-    console.log(root);
+    // console.log(root);
 
     // create grid and add to html root
     let container = document.createElement("div");
@@ -149,26 +150,26 @@ window.onload = function(){
     // add menu to grid
     let menu = document.createElement("div");
     menu.setAttribute('class', 'left');
-    console.log(menu);
+    // console.log(menu);
     container.appendChild(menu);
 
     // add main section to grid
     let main = document.createElement("div");
     main.setAttribute('class', 'middle');
-    console.log(main);
+    // console.log(main);
     container.appendChild(main);
     main.innerHTML = 'Read the bible your way ...';
 
     // add right section to grid
     let right = document.createElement("div");
     right.setAttribute('class', 'right');
-    console.log(right);
+    // console.log(right);
     container.appendChild(right);
 
     // add footer section to grid
     let foot = document.createElement("div");
     foot.setAttribute('class', 'footer');
-    console.log(foot);
+    // console.log(foot);
     container.appendChild(foot);
 
     // add image to heading
@@ -192,7 +193,7 @@ window.onload = function(){
     for (let i = 1; i < buttonNames.length - 2; i++) {
         let button = document.createElement('button');
         button.innerHTML = buttonNames[i];
-        console.log(button);
+        // console.log(button);
         menu.appendChild(button);
         button.addEventListener('click', function(){
             main.innerHTML = content[i];
@@ -201,7 +202,7 @@ window.onload = function(){
 
     let button2ndLast = document.createElement('button');
     button2ndLast.innerHTML = buttonNames[buttonNames.length - 2];
-    console.log(button2ndLast);
+    // console.log(button2ndLast);
     menu.appendChild(button2ndLast);
     button2ndLast.addEventListener('click', function(){
         main.innerHTML = content[buttonNames.length - 2] + '<br>';
@@ -210,7 +211,7 @@ window.onload = function(){
     
     let buttonLast = document.createElement('button');
     buttonLast.innerHTML = buttonNames[buttonNames.length - 1];
-    console.log(buttonLast);
+    // console.log(buttonLast);
     menu.appendChild(buttonLast);
     buttonLast.addEventListener('click', function (){
         main.innerHTML = content[buttonNames.length - 1];
@@ -244,7 +245,7 @@ window.onload = function(){
         dropdn.appendChild(vers);
         vers.addEventListener('click', function(){
             selvers = i;
-            console.log(version[selvers].shortname);
+            // console.log(version[selvers].shortname);
             main.innerHTML = `Selected version: ${version[selvers].fullname} <br>`;
             main.appendChild(books);
         });
@@ -270,8 +271,8 @@ window.onload = function(){
         bookdrop.appendChild(bookButt);
         bookButt.addEventListener('click', function(){
             selbk = i;
-            console.log(bbooks[selbk].bk, bbooks[selbk].maxchap);
-            console.log(typeof(bbooks[selbk].maxchap));
+            // console.log(bbooks[selbk].bk, bbooks[selbk].maxchap);
+            // console.log(typeof(bbooks[selbk].maxchap));
             main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br>`;
             main.appendChild(chapters);
         });
@@ -289,22 +290,23 @@ window.onload = function(){
     let chaptdrop = document.createElement('div');
     chaptdrop.setAttribute('class', 'dropdown-content');
     chapter.appendChild(chaptdrop)
+    // console.log(bbooks[selbk])
+    // console.log(selbk, 'this is selbk')
 
-    for (let i = 1; i < 50; i++) {
+    for (let i = 1; i < 25; i++) {
         let chaptButt = document.createElement('button');
         chaptButt.setAttribute('class', 'button2')
         chaptButt.innerHTML = i;
         chaptdrop.appendChild(chaptButt);
         chaptButt.addEventListener('click', function(){
             selch = i;
-            console.log(selch);
+            // console.log(selch);
             main.innerHTML = `Selected version: ${version[selvers].fullname} <br> Selected book: ${bbooks[selbk].bk} <br> Selected chapter: ${selch} <br>`;
             main.appendChild(getPassage);
         });
     };
 
-    let j = 0;
-    
+    // get passage
     let getPassage = document.createElement('div');
     getPassage.setAttribute('class', 'dropdown');
 
